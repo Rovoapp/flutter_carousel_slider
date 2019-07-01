@@ -134,7 +134,7 @@ class CarouselSlider extends StatefulWidget {
   /// Jumps the page position from its current value to the given value,
   /// without animation, and without checking if the new value is in range.
   void jumpToPage(int page) {
-    final index = _getRealIndex(pageController.page.toInt(), realPage, items.length);
+    final index = _getRealIndex(pageController.page.toInt() + initialPage, realPage, items.length);
     return pageController.jumpToPage(pageController.page.toInt() + page - index);
   }
 
@@ -143,7 +143,7 @@ class CarouselSlider extends StatefulWidget {
   /// The animation lasts for the given duration and follows the given curve.
   /// The returned [Future] resolves when the animation completes.
   Future<void> animateToPage(int page, {Duration duration, Curve curve}) {
-    final index = _getRealIndex(pageController.page.toInt(), realPage, items.length);
+    final index = _getRealIndex(pageController.page.toInt() + initialPage, realPage, items.length);
     return pageController.animateToPage(pageController.page.toInt() + page - index,
         duration: duration, curve: curve);
   }
